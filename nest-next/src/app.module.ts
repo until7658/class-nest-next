@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import DatabaseLogger from './common/logger/database.logger';
 import { UserEntity } from './user/entities/user.entity';
 import { UserRepository } from './user/repository/user.repository';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -33,6 +34,8 @@ import { UserRepository } from './user/repository/user.repository';
       },
       inject: [ConfigService],
     }),
+    // swagger 의 경우 모듈을 import 하는 순서대로 노출됨
+    AuthModule,
     UserModule,
   ],
 })
