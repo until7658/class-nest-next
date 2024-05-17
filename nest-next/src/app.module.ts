@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import DatabaseLogger from './common/logger/database.logger';
 import { UserEntity } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -37,5 +39,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     UserModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
