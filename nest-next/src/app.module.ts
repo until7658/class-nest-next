@@ -6,7 +6,6 @@ import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import DatabaseLogger from './common/logger/database.logger';
 import { UserEntity } from './user/entities/user.entity';
-import { UserRepository } from './user/repository/user.repository';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
