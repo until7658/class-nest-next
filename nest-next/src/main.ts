@@ -15,8 +15,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
-  app.useGlobalFilters(new HttpExceptionFilter());
-
   const config = new DocumentBuilder()
     .setTitle(configService.get('SWAGGER_TITLE'))
     .setDescription(configService.get('SWAGGER_DESC'))
@@ -31,6 +29,8 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config, option);
   SwaggerModule.setup(configService.get('SWAGGER_PATH'), app, document);
+
+  // app.useGlobalFilters(new HttpExceptionFilter());
 
   await app.listen(configService.get('APP_PORT'));
 }

@@ -12,12 +12,6 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    RenderModule.forRootAsync(
-      Next({ dev: true }),
-      /* null means that nest-next
-              should look for pages in root dir */
-      { viewsDir: null },
-    ),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
@@ -43,6 +37,7 @@ import { AppService } from './app.service';
     // swagger 의 경우 모듈을 import 하는 순서대로 노출됨
     AuthModule,
     UserModule,
+    RenderModule.forRootAsync(Next({ dev: true }), { viewsDir: null }),
   ],
   controllers: [AppController],
   providers: [AppService],

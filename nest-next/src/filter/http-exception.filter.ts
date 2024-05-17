@@ -5,16 +5,18 @@ import {
   HttpException,
   HttpStatus,
   Logger,
+  UnauthorizedException,
 } from '@nestjs/common';
 
-@Catch(HttpException)
+@Catch()
 export class HttpExceptionFilter implements ExceptionFilter {
   private readonly logger = new Logger('HTTP');
 
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-    // const request = ctx.getRequest();
+    const request = ctx.getRequest();
+
     // todo : check exception
     this.logger.error(exception);
 
