@@ -12,11 +12,16 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
+    RenderModule.forRootAsync(
+      Next({ dev: true }),
+      /* null means that nest-next
+              should look for pages in root dir */
+      { viewsDir: null },
+    ),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
     }),
-    RenderModule.forRootAsync(Next({ dev: true }), { viewsDir: null }),
     TypeOrmModule.forRootAsync({
       useFactory: async (configService: ConfigService) => {
         return {

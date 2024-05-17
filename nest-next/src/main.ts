@@ -9,6 +9,7 @@ import { ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { HttpExceptionFilter } from './filter/http-exception.filter';
+import { NextServer } from 'next/dist/server/next';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
