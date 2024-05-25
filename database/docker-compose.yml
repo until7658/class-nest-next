@@ -14,7 +14,7 @@ services:
       - MYSQL_ROOT_PASSWORD=pwd1234!
       - MYSQL_MULTIPLE_DATABASES=MY_SERVICE
       - MYSQL_USER=service
-      - MYSQL_PASSWORD=service1234!@#
+      - MYSQL_PASSWORD=service1234!
       # - TZ=Asia/Seoul
     networks:
       - my-network
