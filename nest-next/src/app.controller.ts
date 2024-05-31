@@ -5,9 +5,19 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('/')
   @Render('index')
   home() {
+    return {};
+  }
+  @Get('/test')
+  @Render('test/index2')
+  home2() {
+    return {};
+  }
+  @Get('/test2')
+  @Render('test/index2')
+  home3() {
     return {};
   }
 }
