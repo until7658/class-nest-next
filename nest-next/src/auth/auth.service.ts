@@ -15,6 +15,7 @@ export class AuthService {
 
   async signIn(login: LoginDto): Promise<{ accessToken: string }> {
     const user = await this.userService.findUserById(login.userId);
+    // console.log(await bcrypt.hash(user.password, 10));
     if (!user || !(await bcrypt.compare(login.password, user.password))) {
       // throw new AuthException(
       //   AuthHttpStatus.UNAUTHORIZED,

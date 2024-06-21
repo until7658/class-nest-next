@@ -24,6 +24,7 @@ const Home: FC = () => {
           { name: 'Column5', value: 'Value5' },
         ]}
       />
+      <hr />
       <RowTableComponent
         cols={[
           { name: 'Column1' },
