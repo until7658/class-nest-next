@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from '@mui/material';
+import { Button, Pagination, Stack } from '@mui/material';
 import ColumnTableComponent from '../../components/table/column-table';
 import RowTableComponent from '../../components/table/row-table';
 
@@ -15,9 +15,21 @@ const Home: FC = () => {
       >
         Contained
       </Button>
+      <table>
+        <thead>
+          <th>test1</th>
+          <th>test2</th>
+          <th>test3</th>
+        </thead>
+        <tbody>
+          <td>test1</td>
+          <td>test2</td>
+          <td>test3</td>
+        </tbody>
+      </table>
       <ColumnTableComponent
         rows={[
-          { name: 'Column1', value: 'Value1' },
+          { name: 'Column1', value: 'Value1', copy: true },
           { name: 'Column2', value: 'Value2' },
           { name: 'Column3', value: 'Value3' },
           { name: 'Column4', value: 'Value4' },
@@ -54,6 +66,9 @@ const Home: FC = () => {
           },
         ]}
       />
+      <Stack spacing={2}>
+        <Pagination count={10} color="primary" />
+      </Stack>
     </>
   );
 };
