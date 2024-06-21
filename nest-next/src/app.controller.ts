@@ -11,7 +11,7 @@ export class AppController {
     return {};
   }
   @Get('/test')
-  @Render('test/index2')
+  @Render('test/index')
   home2() {
     return {};
   }
