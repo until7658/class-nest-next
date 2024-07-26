@@ -2,9 +2,10 @@ import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './dto/login.dto';
-import * as bcrypt from 'bcrypt';
-import { AuthException } from '../exception/auth.exception';
-import { AuthHttpStatus } from '../enum/auth-status.enum';
+import {
+  comparePassword,
+  encryptPasswordWithFixedSalt,
+} from '../../utils/bcryptUtils';
 
 @Injectable()
 export class AuthService {
@@ -15,13 +16,8 @@ export class AuthService {
 
   async signIn(login: LoginDto): Promise<{ accessToken: string }> {
     const user = await this.userService.findUserById(login.userId);
-    // console.log(await bcrypt.hash(user.password, 10));
-    if (!user || !(await bcrypt.compare(login.password, user.password))) {
-      // throw new AuthException(
-      //   AuthHttpStatus.UNAUTHORIZED,
-      //   HttpStatus.UNAUTHORIZED,
-      //   HttpStatus.UNAUTHORIZED,
-      // );
+    console.log(await encryptPasswordWithFixedSalt(user.password));
+    if (!user || !(await comparePassword(login.password, user.password))) {
       throw new UnauthorizedException();
     }
     const payload = { sub: user.userId, userEmail: user.userEmail };
